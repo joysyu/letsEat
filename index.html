@@ -24,7 +24,7 @@
     <body>
         <div class="ui three item pointing menu">
             <a class="active item">Food</a>
-            <a class="item"><img src="dogHead.png"></a>
+            <a class="item" href="pet.html"><img src="dogHead.png"></a>
             <a class="item">Other</a>
         </div>
 
@@ -43,17 +43,8 @@
                 
                         <div class="row"> <!--big row-->
                             <div class="centered column">
-                                <!--div class="row">
-                                    <div class="column">
-                                        <img class="ui small centered image" src="fats.png">
-                                    </div>
-                                    <div class="column">
-                                        <h4 class="ui header">3</h4>
-                                    </div>
-                                </div-->
-
                                 <div class= "ui fluid image">
-                                    <i class="ui left corner label"> 3 </i>
+                                    <i class="ui left corner label" id="fatCount"></i>
                                     <img class="ui small centered image food-image" src="fats.png" id="fat-icon">
                                 </div>
 
@@ -68,7 +59,7 @@
                                         <img class="ui small centered image food-image" src="dairy.png" id="dairy-icon">
                                     </div>
                                     <div class="column">
-                                        <h4 class="ui header">3</h4>
+                                        <p class="ui header" id="dairyCount"></p>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +70,7 @@
                                         <img class="ui small centered image food-image" src="veggies.png" id="veggie-icon">
                                     </div>
                                     <div class="column">
-                                        <h4 class="ui header">3</h4>
+                                        <p class="ui header" id="vegCount"></p>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +83,7 @@
                                         <img class="ui small centered image food-image" src="carbs.png" id="carb-icon">
                                     </div>
                                     <div class="column">
-                                        <h4 class="ui header">3</h4>
+                                        <p class="ui header" id = "carbCount"></p>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +93,7 @@
                                         <img class="ui small centered image food-image" src="fruits.png" id="fruit-icon">
                                     </div>
                                     <div class="column">
-                                        <h4 class="ui header">3</h4>
+                                        <p class="ui header" id="fruitCount"></p>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +107,7 @@
                         <img class="ui fluid image" src="plateFork.png" alt="plate" id="plate-image">
                     <div class="row"><br></div>
                     <div class="center aligned row">
-                        <button class="ui primary  floated button">Save</button>
+                        <button class="ui primary floated button">Save</button>
                     </div>
                 </div>
 
@@ -128,7 +119,7 @@
                         <div class="content">
                             <img class="left floated tiny ui image" src="graphics/star.jpeg">
                             <div class="right floated header">
-                                <p id="starText"></p>
+                                <p id="starText" style="font-size: 3em;"></p>
                             </div>
                         </div>
                     </div>
