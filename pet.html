@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta charset="utf-8">
+<title>Let's Eat</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+
+<link rel="stylesheet" href="pet_css.css">
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+
+<script>
+var stars = 100;
+$(document).ready(function() {
+	$("#starText").html(stars);
+});
+
+$(document).on('click', '#hatButton', function() {
+	console.log("click HAT ", stars);
+	if (stars >= 40) {
+		stars = stars - 40;
+		refreshStars();
+		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
+		$(".progress").progress('increment');
+	}
+})
+
+$(document).on('click', '#boneButton', function() {
+	console.log("CLICK BONE ", stars);
+	if (stars >= 20) {
+		stars = stars - 20;
+		refreshStars();
+		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
+		$(".progress").progress('increment');
+	}
+})
+
+$(document).on('click', '#sunglassesButton', function() {
+	console.log("click GLASSES ", stars);
+	if (stars >= 30) {
+		stars = stars - 30;
+		refreshStars();
+		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
+		$(".progress").progress('increment');
+	}
+})
+
+$(document).on('click', '#bowtieButton', function() {
+	console.log("click BOWTIE ", stars);
+	if (stars >= 50) {
+		stars = stars - 50;
+		refreshStars();
+		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
+		$(".progress").progress('increment');
+	}
+})
+
+
+
+function refreshStars() {
+	$("#starText").html(stars);
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="ui centered middle aligned grid">
+		<div class="one wide column">
+		</div>
+		<div class="four wide column">
+			<div class="ui big teal progress" data-percent="20">
+  				<div class="bar">
+  				</div>
+			</div>
+		</div>
+		<div class="one wide column">
+		</div>
+		<div class="four wide column">
+			<div class="container" id="petContainer">
+				<div id="petDiv"><img id="petImg" class="ui medium centered image" src="graphics/pet.jpg"></div>
+			</div>
+		</div>
+		<div class="one wide column">
+		</div>
+		<div class="four wide column">
+			<div class="ui centered card">
+				<div class="content">
+					<img class="left floated tiny ui image" src="graphics/star.jpeg">
+					<div class="right floated header">
+						<p id="starText"></p>
+					</div>
+				</div>
+			</div>
+			<div class="ui two column grid">
+				
+				<div class="row">
+					<div class="column">
+						<button class="ui circular button" id="hatButton">
+							<img class="ui small centered image" src="graphics/hat.png" id="button-image">
+							<h2 class="ui header">40</h2>
+						</button>
+					</div>
+					<div class="column">
+						<button class="ui circular button" id="boneButton">
+							<img class="ui small centered image" src="graphics/bone.png" id="button-image">
+							<h2 class="ui header">20</h2>
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="column">
+						<button class="ui circular button" id="sunglassesButton">
+							<img class="ui small centered image" src="graphics/sunglasses.png" id="button-image">
+							<h2 class="ui header">30</h2>
+						</button>
+					</div>
+					<div class="column">
+						<button class="ui circular button" id="bowtieButton">
+							<img class="ui small centered image" src="graphics/bowtie.png" id="button-image">
+							<h2 class="ui header">50</h2>
+						</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="one wide column">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
