@@ -1,0 +1,56 @@
+#starText {
+	font-size: 3em;
+}
+
+.ui.card {
+	width: 60%;
+}
+
+p {
+	text-align: center;
+}
+
+h1 {
+	width: 100%;
+}
+
+#petContainer {
+	position: relative;
+}
+
+#petDiv {
+	z-index: 0;
+	position:absolute;
+}
+
+#sunglassesDiv {
+	z-index: 1;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+}
+
+#boneDiv {
+	z-index: 1;
+	position: absolute;
+	right: 0%;
+	bottom: 0%;
+}
+
+#button-image {
+	width: 75%;
+}
+
+#hatDiv {
+	z-index: 1;
+	position: absolute;
+	left: 22%;
+	top: -13%;
+}
+
+#bowtieDiv {
+	z-index: 1;
+	position: absolute;
+	left: 22%;
+	top: 50%;
+}
