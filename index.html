@@ -22,41 +22,121 @@
     </head>
 
     <body>
-        <div class="ui three item menu">
+        <div class="ui three item pointing menu">
             <a class="active item">Food</a>
-            <a class="item">Pet</a>
+            <a class="item"><img src="dogHead.png"></a>
             <a class="item">Other</a>
         </div>
 
-        <div class="ui tabular menu">
+        <!--div class="ui tabular menu">
             <a class="active item">
              Food
             </a>
             <a class="item">
-             Pet
+                <img src="dogHead.png">            
             </a>
-        </div>
+        </div-->
 
         <div class="ui grid">
-            <div class="six wide column">
-                <!--food-->
-                    <img class="ui fluid image" src="dairy.png" alt="Food Groups">
-                    <img class="ui fliud image" src="veggies.png">
-                                        <img class="ui fliud image" src="carbs.png">
-                    <img class="ui fliud image" src="fruits.png">
-                    <img class="ui fliud image" src="fats.png">
+                <div class="five wide column">
+                    <div class="ui two column grid">
+                
+                        <div class="row"> <!--big row-->
+                            <div class="centered column">
+                                <!--div class="row">
+                                    <div class="column">
+                                        <img class="ui small centered image" src="fats.png">
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="ui header">3</h4>
+                                    </div>
+                                </div-->
 
+                                <div class= "ui fluid image">
+                                    <i class="ui left corner label"> 3 </i>
+                                    <img class="ui small centered image" src="fats.png">
+                                </div>
 
-            </div>
-            <div class="six wide column">
+                            </div>
+                        </div>
+
+                        <div class="row"> <!--big row-->
+
+                            <div class="column"> <!--dairy column-->
+                                <div class="row">
+                                    <div class="column">
+                                        <img class="ui small centered image" src="dairy.png">
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="ui header">3</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column"> <!-- veggie column-->
+                                <div class="row">
+                                    <div class = "column">
+                                        <img class="ui small centered image" src="veggies.png">
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="ui header">3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row"> <!--big row-->
+                            <div class="column">
+                                <div class="row">
+                                    <div class="column">
+                                        <img class="ui small centered image" src="carbs.png">
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="ui header">3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="row">
+                                    <div class="column">
+                                        <img class="ui small centered image" src="fruits.png">
+                                    </div>
+                                    <div class="column">
+                                        <h4 class="ui header">3</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            
                 <!--plate-->
-                <img class="ui fluid image" src="plate.png" alt="plate">
-            </div>
-            <div class="four wide column">
-                <p>pet</p>
-                <img class="ui fluid image" src="dog.jpg" alt="dog">
+                <div class="six wide center aligned column">
+                        <img class="ui fluid image" src="plateFork.png" alt="plate">
+                    <div class="row"><br></div>
+                    <div class="center aligned row">
+                        <button class="ui primary  floated button">Save</button>
+                    </div>
+                </div>
 
-            </div>
+                <div class="one wide column">
+                </div>
+                <!--pet-->
+                <div class="three wide middle aligned column">
+                    <div class="ui centered card">
+                        <div class="content">
+                            <img class="left floated tiny ui image" src="graphics/star.jpeg">
+                            <div class="right floated header">
+                                <p id="starText"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <img class="ui fluid image" src="dog.jpg" alt="dog">
+                </div>
 
 
+                <div class="one wide column">
+                </div>
     </body>
