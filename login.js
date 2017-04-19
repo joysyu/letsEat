@@ -8,8 +8,9 @@ $(document).on("click", ".login.button", function(evt) {
 
 $(document).on("click", '.circular.ui.icon.button', function(evt) {
 	var button_id = evt.target.id
+	console.log(button_id)
 	$('#' + button_id).css({'background': 'red'})
-	$('#' + button_id).disabled = true
+	$('#' + button_id).prop('disabled', true);
 	if (order == undefined) {
 		$('#wrong-password').html("");
 		order = evt.target.id
@@ -27,7 +28,7 @@ $(document).on("click", '.circular.ui.icon.button', function(evt) {
 			order = undefined
 			$('#wrong-password').html("<span> Wrong password! Please try again! </span>");
 			$('.circular.ui.icon.button').css({'background': ''})
-			$('.circular.ui.icon.button').disabled = false
+			$('.circular.ui.icon.button').prop('disabled', false)
 		}
 	}
 });
