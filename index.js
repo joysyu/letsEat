@@ -78,6 +78,7 @@ $(document).on('mousedown', function(evt) {
 			MOVE_IMAGE_DIV = $('#fats-icon-div');
 			imageSrc = "fats.png";
 			console.log("move image div", '#fats-icon-div');
+		} else if (evt.target.id.includes('veg')) {
 		}
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
