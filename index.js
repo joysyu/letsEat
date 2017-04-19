@@ -3,11 +3,11 @@ var MOVE_IMAGE = null
 
 var IMAGE_NUM = 0;
 
-var fatCount = 2;
-var dairyCount = 3;
+var fatCount = 1;
+var dairyCount = 2;
 var vegCount = 5;
-var carbCount = 4;
-var fruitCount = 3;
+var carbCount = 3;
+var fruitCount = 5;
 
 var starsToAdd = 0;
 
@@ -77,7 +77,7 @@ $(document).on('click', function(e){
 		console.log(starsToAdd)
 		console.log(stars);
 		refreshStars();
-		refreshCounts();
+		//refreshCounts();
 
 		// get rid of food images that overlap plate
 		var rectPlate = $('#plate-image')[0].getBoundingClientRect();
@@ -111,10 +111,8 @@ $(document).on('mousedown', function(evt) {
 
 		id = evt.target.id.slice(0,4); // should be fats, carb, dair, frui, or vegg
 		MOVE_IMAGE_DIV = $('#' + id + '-icon-div');
-		// console.log(MOVE_IMAGE_DIV.children());
 		imageSrc = "graphics/" + id + ".png";
 
-		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
 		MOVE_IMAGE = $('#' + evt.target.id);
 
 
@@ -123,12 +121,9 @@ $(document).on('mousedown', function(evt) {
 
 		IMAGE_NUM += 1;
 
-		toAppend = "<img id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute;'>";
+		toAppend = "<img id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute; width: 85%; height: auto'>";
 
 		MOVE_IMAGE_DIV.append(toAppend);
-
-		// MOVE_IMAGE.css('height', '10%');
-		// MOVE_IMAGE.css('width', 'auto');
 
 		if (!MOVE_IMAGE.attr('original-left') && !MOVE_IMAGE.attr('original-top')) {
 			MOVE_IMAGE.attr('original-left', evt.pageX)
@@ -162,34 +157,24 @@ $(document).on('mouseup', function(evt) {
 			// TODO: put it on the plate, decrement that food icon's counter, etc.
 
 			console.log(MOVE_IMAGE[0].id);
+			console.log("stars to add before if block", starsToAdd);
 
-			if (MOVE_IMAGE[0].id == "fats-icon") {
-				if (fatCount >= 1){
-					fatCount -= 1;
-				}
-				starsToAdd += 5;
-			} else if (MOVE_IMAGE[0].id == "dair-icon") {
-				if (dairyCount >= 1){
-					dairyCount -= 1;
-				}
-				starsToAdd += 5;
-			} else if (MOVE_IMAGE[0].id == "vegg-icon") {
-				if (vegCount >= 1){
-					vegCount -= 1;
-				}
-				stars += 5;
-			} else if (MOVE_IMAGE[0].id == "carb-icon") {
-				if (carbCount >= 1){
-					carbCount -= 1;
-				}
-				starsToAdd += 5;
-			} else if (MOVE_IMAGE[0].id == "frui-icon") {
-				if (fruitCount >= 1){
-					fruitCount -= 1;
-				}
-				starsToAdd += 5;
+			if (MOVE_IMAGE[0].id.includes("fats")) {
+				starsToAdd += fatCount;
+			} else if (MOVE_IMAGE[0].id.includes("dair")) {
+				starsToAdd += dairyCount;
+			} else if (MOVE_IMAGE[0].id.includes("vegg")) {
+				starsToAdd += vegCount;
+			} else if (MOVE_IMAGE[0].id.includes("carb")) {
+				starsToAdd += carbCount;
+			} else if (MOVE_IMAGE[0].id.includes("frui")) {
+				starsToAdd += fruitCount;
 			}
+
+			console.log("stars to add after if block", starsToAdd);
+
 		}
+
 
 		else {
 			MOVE_IMAGE.animate({	// TODO: do these need to be something different?
