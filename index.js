@@ -61,11 +61,11 @@ function refreshStars() {
 }
 
 function refreshCounts() {
-	$("#fatCount").html(fatCount);
-	$("#dairyCount").html(dairyCount);
-	$("#vegCount").html(vegCount);
+	$("#fatsCount").html(fatCount);
+	$("#dairCount").html(dairyCount);
+	$("#veggCount").html(vegCount);
 	$("#carbCount").html(carbCount);
-	$("#fruitCount").html(fruitCount);
+	$("#fruiCount").html(fruitCount);
 }
 
 
@@ -80,7 +80,7 @@ $(document).on('mousedown', function(evt) {
 		console.log("id", id);
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
-		MOVE_IMAGE = $('#' + id);
+		MOVE_IMAGE = $('#' + evt.target.id);
 
 		console.log("IM CLICKED ON FOOD-IMAGE");
 
