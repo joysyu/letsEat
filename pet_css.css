@@ -6,6 +6,10 @@
 	width: 60%;
 }
 
+.right.floated.column {
+	margin-right: .75em;
+}
+
 p {
 	text-align: center;
 }
