@@ -190,6 +190,8 @@ $(document).on('mouseup', function(evt) {
 				top: 0,
 				left: 0
 			})
+
+			starsToAdd -= 5;
 			// ORIGINAL_LEFT = null;
   	// 		ORIGINAL_TOP = null;
 		}
