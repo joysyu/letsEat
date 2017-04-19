@@ -77,6 +77,7 @@ $(document).on('click', function(e){
 		console.log(starsToAdd)
 		console.log(stars);
 		refreshStars();
+		refreshCounts();
 	}
 });
 
