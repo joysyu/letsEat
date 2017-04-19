@@ -74,28 +74,22 @@ $(document).on('mousedown', function(evt) {
 
 	if (evt.target.classList.contains('food-image')) {
 
-		if (evt.target.id.includes('fat')) {
-			MOVE_IMAGE_DIV = $('#fats-icon-div');
-			imageSrc = "fats.png";
-			console.log("move image div", '#fats-icon-div');
-		} else if (evt.target.id.includes('veg')) {
-		}
+		id = evt.target.id.slice(0,4); // should be fats, carb, dair, frui, or vegg
+		MOVE_IMAGE_DIV = $('#' + id + '-icon-div');
+		imageSrc = id + ".png";
+		console.log("id", id);
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
-		MOVE_IMAGE = $('#' + evt.target.id);
+		MOVE_IMAGE = $('#' + id);
 
 		console.log("IM CLICKED ON FOOD-IMAGE");
-		console.log("move image", '#' + evt.target.id);
-
 
 		MOVE_IMAGE.css('zIndex', 30);
 		MOVE_IMAGE.css('pointer-events', 'none');
 
 		IMAGE_NUM += 1;
 
-		console.log
-
-		toAppend = "<img id =" + evt.target.id.slice(0,-5) + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute;'>";
+		toAppend = "<img id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute;'>";
 
 		MOVE_IMAGE_DIV.append(toAppend);
 
