@@ -77,6 +77,34 @@ $(document).on('click', function(e){
 		console.log(starsToAdd)
 		console.log(stars);
 		refreshStars();
+		refreshCounts();
+
+		// get rid of food images that overlap plate
+		var rectPlate = $('#plate-image')[0].getBoundingClientRect();
+
+		var foodImages = document.getElementsByClassName('food-image');
+		for (i = 0; i < foodImages.length; i++) {
+			var rectImage = foodImages[i].getBoundingClientRect();
+			var overlap = !(rectPlate.right < rectImage.left || 
+                			rectPlate.left > rectImage.right || 
+			                rectPlate.bottom < rectImage.top || 
+			                rectPlate.top > rectImage.bottom)
+			if (overlap) {
+				console.log(foodImages[i]);
+				foodImages[i].style.visibility = "hidden";
+			}
+		}
+
+
+		// $('food-image').each(function(im) {
+		// 	console.log(im)
+		// 	// var rectImage = im.getBoundingClientRect();
+		// 	// var overlap = !(rectPlate.right < rectImage.left || 
+  //  //              			rectPlate.left > rectImage.right || 
+		// 	//                 rectPlate.bottom < rectImage.top || 
+		// 	//                 rectPlate.top > rectImage.bottom)
+		// 	// console.log(overlap);
+		// })
 	}
 });
 
