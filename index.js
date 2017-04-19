@@ -94,6 +94,7 @@ $(document).on('click', function(e){
 				foodImages[i].style.visibility = "hidden";
 			}
 		}
+		starsToAdd = 0;
 	}
 });
 
