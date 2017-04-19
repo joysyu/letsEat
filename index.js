@@ -21,6 +21,8 @@ $(document).on('click', '#hatButton', function() {
 		refreshStars();
 		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
 		$(".progress").progress('increment');
+	} else {
+		starErrorMsg();
 	}
 })
 
@@ -31,6 +33,8 @@ $(document).on('click', '#boneButton', function() {
 		refreshStars();
 		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
 		$(".progress").progress('increment');
+	} else {
+		starErrorMsg();
 	}
 })
 
@@ -41,6 +45,8 @@ $(document).on('click', '#sunglassesButton', function() {
 		refreshStars();
 		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
 		$(".progress").progress('increment');
+	} else {
+		starErrorMsg();
 	}
 })
 
@@ -51,12 +57,23 @@ $(document).on('click', '#bowtieButton', function() {
 		refreshStars();
 		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
 		$(".progress").progress('increment');
+	} else {
+		starErrorMsg();
 	}
 })
 
 
 function refreshStars() {
 	$("#starText").html(stars);
+}
+
+function starErrorMsg() {
+	$("#starsMsg").html("<span id='starSpan'>You do not have enough stars!</span>");
+	setTimeout(function() {
+		$("#starsMsg").empty();		
+
+	}, 1000);
+	console.log("ERROR MSG");
 }
 
 $(document).on('click', function(e){

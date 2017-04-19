@@ -58,3 +58,8 @@ h1 {
 	left: 33%;
 	top: 59%;
 }
+
+#starsMsg {
+	color: red;
+	font-size: large;
+}
