@@ -9,6 +9,8 @@ var vegCount = 5;
 var carbCount = 4;
 var fruitCount = 3;
 
+var starsToAdd = 0;
+
 var stars = 100;
 $(document).ready(function() {
 	refreshStars();
@@ -68,6 +70,16 @@ function refreshCounts() {
 	$("#fruiCount").html(fruitCount);
 }
 
+$(document).on('click', function(e){
+	if (e.target.id == "saveButton"){
+		console.log("saveButton");
+		stars += starsToAdd;
+		console.log(starsToAdd)
+		console.log(stars);
+		refreshStars();
+	}
+});
+
 
 $(document).on('mousedown', function(evt) {
 	evt.preventDefault();
@@ -77,12 +89,10 @@ $(document).on('mousedown', function(evt) {
 		id = evt.target.id.slice(0,4); // should be fats, carb, dair, frui, or vegg
 		MOVE_IMAGE_DIV = $('#' + id + '-icon-div');
 		imageSrc = id + ".png";
-		console.log("id", id);
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
 		MOVE_IMAGE = $('#' + evt.target.id);
 
-		console.log("IM CLICKED ON FOOD-IMAGE");
 
 		MOVE_IMAGE.css('zIndex', 30);
 		MOVE_IMAGE.css('pointer-events', 'none');
@@ -93,7 +103,6 @@ $(document).on('mousedown', function(evt) {
 
 		MOVE_IMAGE_DIV.append(toAppend);
 
-		console.log("i appended", toAppend)
 		// MOVE_IMAGE.css('height', '10%');
 		// MOVE_IMAGE.css('width', 'auto');
 
@@ -128,24 +137,34 @@ $(document).on('mouseup', function(evt) {
 		if (evt.target.id === 'plate-image') {
 			// TODO: put it on the plate, decrement that food icon's counter, etc.
 
+			console.log(MOVE_IMAGE[0].id);
+
 			if (MOVE_IMAGE[0].id == "fats-icon") {
-				fatCount -= 1;
+				if (fatCount >= 1){
+					fatCount -= 1;
+				}
+				starsToAdd += 5;
+			} else if (MOVE_IMAGE[0].id == "dair-icon") {
+				if (dairyCount >= 1){
+					dairyCount -= 1;
+				}
+				starsToAdd += 5;
+			} else if (MOVE_IMAGE[0].id == "vegg-icon") {
+				if (vegCount >= 1){
+					vegCount -= 1;
+				}
 				stars += 5;
-			} else if (MOVE_IMAGE[0].id == "dairy-icon") {
-				dairyCount -= 1;
-				stars += 5;
-			} else if (MOVE_IMAGE[0].id == "veggies-icon") {
-				vegCount -= 1;
-				stars += 5;
-			} else if (MOVE_IMAGE[0].id == "carbs-icon") {
-				vegCount -= 1;
-				stars += 5;
-			} else if (MOVE_IMAGE[0].id == "fruits-icon") {
-				fruitCount -= 1;
-				stars += 5;
+			} else if (MOVE_IMAGE[0].id == "carb-icon") {
+				if (carbCount >= 1){
+					carbCount -= 1;
+				}
+				starsToAdd += 5;
+			} else if (MOVE_IMAGE[0].id == "frui-icon") {
+				if (fruitCount >= 1){
+					fruitCount -= 1;
+				}
+				starsToAdd += 5;
 			}
-			refreshStars();
-			refreshCounts();
 		}
 
 		else {
