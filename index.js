@@ -94,17 +94,6 @@ $(document).on('click', function(e){
 				foodImages[i].style.visibility = "hidden";
 			}
 		}
-
-
-		// $('food-image').each(function(im) {
-		// 	console.log(im)
-		// 	// var rectImage = im.getBoundingClientRect();
-		// 	// var overlap = !(rectPlate.right < rectImage.left || 
-  //  //              			rectPlate.left > rectImage.right || 
-		// 	//                 rectPlate.bottom < rectImage.top || 
-		// 	//                 rectPlate.top > rectImage.bottom)
-		// 	// console.log(overlap);
-		// })
 	}
 });
 
@@ -200,6 +189,8 @@ $(document).on('mouseup', function(evt) {
 				top: 0,
 				left: 0
 			})
+
+			starsToAdd -= 5;
 			// ORIGINAL_LEFT = null;
   	// 		ORIGINAL_TOP = null;
 		}
