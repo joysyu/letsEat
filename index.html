@@ -43,9 +43,9 @@
                 
                         <div class="row"> <!--big row-->
                             <div class="centered column">
-                                <div class= "ui fluid image">
+                                <div class= "ui fluid image" id ="fats-icon-div">
                                     <i class="ui left corner label" id="fatCount"></i>
-                                    <img class="ui small centered image food-image" src="fats.png" id="fat-icon">
+                                    <img class="ui small centered image food-image" src="fats.png" id="fats-icon">
                                 </div>
 
                             </div>
@@ -55,11 +55,14 @@
 
                             <div class="column"> <!--dairy column-->
                                 <div class="row">
-                                    <div class="column">
-                                        <img class="ui small centered image food-image" src="dairy.png" id="dairy-icon">
-                                    </div>
-                                    <div class="column">
-                                        <p class="ui header" id="dairyCount"></p>
+
+                                    <div id = "dairy-div">
+                                        <div class="column">
+                                            <img class="ui small centered image food-image" src="dairy.png" id="dairy-icon">
+                                        </div>
+                                        <div class="column">
+                                            <p class="ui header" id="dairyCount"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,12 +106,12 @@
                 </div>
             
                 <!--plate-->
-                <div class="six wide center aligned column">
+                <div class="six wide middle aligned column">
                         <img class="ui fluid image" src="plateFork.png" alt="plate" id="plate-image">
                     <div class="row"><br></div>
-                    <div class="center aligned row">
+                    <!--div class="center aligned row">
                         <button class="ui primary floated button">Save</button>
-                    </div>
+                    </div-->
                 </div>
 
                 <div class="one wide column">

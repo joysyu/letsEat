@@ -1,6 +1,8 @@
 // Dragging globals
 var MOVE_IMAGE = null
 
+var IMAGE_NUM = 0;
+
 var fatCount = 2;
 var dairyCount = 3;
 var vegCount = 5;
@@ -10,11 +12,7 @@ var fruitCount = 3;
 var stars = 100;
 $(document).ready(function() {
 	refreshStars();
-	$("#fatCount").html(fatCount);
-	$("#dairyCount").html(dairyCount);
-	$("#vegCount").html(vegCount);
-	$("#carbCount").html(carbCount);
-	$("#fruitCount").html(fruitCount);
+	refreshCounts();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -62,20 +60,47 @@ function refreshStars() {
 	$("#starText").html(stars);
 }
 
+function refreshCounts() {
+	$("#fatCount").html(fatCount);
+	$("#dairyCount").html(dairyCount);
+	$("#vegCount").html(vegCount);
+	$("#carbCount").html(carbCount);
+	$("#fruitCount").html(fruitCount);
+}
+
 
 $(document).on('mousedown', function(evt) {
 	evt.preventDefault();
-	console.log(evt.target);
 
 	if (evt.target.classList.contains('food-image')) {
+
+		if (evt.target.id.includes('fat')) {
+			MOVE_IMAGE_DIV = $('#fats-icon-div');
+			imageSrc = "fats.png";
+			console.log("move image div", '#fats-icon-div');
+		}
+
+		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
 		MOVE_IMAGE = $('#' + evt.target.id);
+
+		console.log("IM CLICKED ON FOOD-IMAGE");
+		console.log("move image", '#' + evt.target.id);
+
+
 		MOVE_IMAGE.css('zIndex', 30);
 		MOVE_IMAGE.css('pointer-events', 'none');
 
-		d = document.createElement('div');
-		d.innerHTML = "HELLO";
-		d.style.zIndex = "10000";
-		MOVE_IMAGE.append(d);
+		IMAGE_NUM += 1;
+
+		console.log
+
+		toAppend = "<img id =" + evt.target.id.slice(0,-5) + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute;'>";
+
+		MOVE_IMAGE_DIV.append(toAppend);
+
+		console.log("i appended", toAppend)
+		// MOVE_IMAGE.css('height', '10%');
+		// MOVE_IMAGE.css('width', 'auto');
 
 		if (!MOVE_IMAGE.attr('original-left') && !MOVE_IMAGE.attr('original-top')) {
 			MOVE_IMAGE.attr('original-left', evt.pageX)
@@ -107,6 +132,25 @@ $(document).on('mouseup', function(evt) {
 	if (MOVE_IMAGE) {
 		if (evt.target.id === 'plate-image') {
 			// TODO: put it on the plate, decrement that food icon's counter, etc.
+
+			if (MOVE_IMAGE[0].id == "fats-icon") {
+				fatCount -= 1;
+				stars += 5;
+			} else if (MOVE_IMAGE[0].id == "dairy-icon") {
+				dairyCount -= 1;
+				stars += 5;
+			} else if (MOVE_IMAGE[0].id == "veggies-icon") {
+				vegCount -= 1;
+				stars += 5;
+			} else if (MOVE_IMAGE[0].id == "carbs-icon") {
+				vegCount -= 1;
+				stars += 5;
+			} else if (MOVE_IMAGE[0].id == "fruits-icon") {
+				fruitCount -= 1;
+				stars += 5;
+			}
+			refreshStars();
+			refreshCounts();
 		}
 
 		else {
