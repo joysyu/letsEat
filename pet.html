@@ -16,63 +16,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
 
-<script>
-var stars = 100;
-$(document).ready(function() {
-	$("#starText").html(stars);
-});
+<script src="index.js"></script>
 
-$(document).on('click', '#hatButton', function() {
-	console.log("click HAT ", stars);
-	if (stars >= 40) {
-		stars = stars - 40;
-		refreshStars();
-		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
-		$(".progress").progress('increment');
-	}
-})
-
-$(document).on('click', '#boneButton', function() {
-	console.log("CLICK BONE ", stars);
-	if (stars >= 20) {
-		stars = stars - 20;
-		refreshStars();
-		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
-		$(".progress").progress('increment');
-	}
-})
-
-$(document).on('click', '#sunglassesButton', function() {
-	console.log("click GLASSES ", stars);
-	if (stars >= 30) {
-		stars = stars - 30;
-		refreshStars();
-		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
-		$(".progress").progress('increment');
-	}
-})
-
-$(document).on('click', '#bowtieButton', function() {
-	console.log("click BOWTIE ", stars);
-	if (stars >= 50) {
-		stars = stars - 50;
-		refreshStars();
-		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
-		$(".progress").progress('increment');
-	}
-})
-
-
-
-function refreshStars() {
-	$("#starText").html(stars);
-}
-
-</script>
 
 </head>
 
 <body>
+
+<div class="ui three item pointing menu">
+    <a class="item" href="index.html">Food</a>
+    <a class="active item"><img src="dogHead.png"></a>
+    <a class="item">Other</a>
+</div>
 
 <div class="container">
 	<div class="ui centered middle aligned grid">
