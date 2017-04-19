@@ -3,18 +3,15 @@ var MOVE_IMAGE = null
 
 var IMAGE_NUM = 0;
 
-var fatCount = 1;
-var dairyCount = 2;
-var vegCount = 5;
-var carbCount = 3;
-var fruitCount = 5;
+var idToCount = {'vegg':5, 'carb':3, 'frui':5, 'dair':4, 'fats':1}
 
 var starsToAdd = 0;
+
+var seenBefore = [];
 
 var stars = 100;
 $(document).ready(function() {
 	refreshStars();
-	refreshCounts();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -62,22 +59,8 @@ function refreshStars() {
 	$("#starText").html(stars);
 }
 
-function refreshCounts() {
-	$("#fatsCount").html(fatCount);
-	$("#dairCount").html(dairyCount);
-	$("#veggCount").html(vegCount);
-	$("#carbCount").html(carbCount);
-	$("#fruiCount").html(fruitCount);
-}
-
 $(document).on('click', function(e){
-	if (e.target.id == "saveButton"){
-		console.log("saveButton");
-		stars += starsToAdd;
-		console.log(starsToAdd)
-		console.log(stars);
-		refreshStars();
-		//refreshCounts();
+	if (e.target.id == "saveButton") {
 
 		// get rid of food images that overlap plate
 		var rectPlate = $('#plate-image')[0].getBoundingClientRect();
@@ -92,10 +75,18 @@ $(document).on('click', function(e){
 			if (overlap) {
 				console.log(foodImages[i]);
 				foodImages[i].style.visibility = "hidden";
+
+				console.log("ID---", foodImages[i].id);
+				if (!seenBefore.includes(foodImages[i].id)){
+					stars += idToCount[foodImages[i].id.slice(0,4)];
+					seenBefore.push(foodImages[i].id);
+				}
 			}
 		}
-		starsToAdd = 0;
+		refreshStars();
+
 	}
+
 });
 
 
@@ -157,32 +148,31 @@ $(document).on('mouseup', function(evt) {
 			// TODO: put it on the plate, decrement that food icon's counter, etc.
 
 			console.log(MOVE_IMAGE[0].id);
-			console.log("stars to add before if block", starsToAdd);
+			// console.log("stars to add before if block", starsToAdd);
 
-			if (MOVE_IMAGE[0].id.includes("fats")) {
-				starsToAdd += fatCount;
-			} else if (MOVE_IMAGE[0].id.includes("dair")) {
-				starsToAdd += dairyCount;
-			} else if (MOVE_IMAGE[0].id.includes("vegg")) {
-				starsToAdd += vegCount;
-			} else if (MOVE_IMAGE[0].id.includes("carb")) {
-				starsToAdd += carbCount;
-			} else if (MOVE_IMAGE[0].id.includes("frui")) {
-				starsToAdd += fruitCount;
-			}
+			// if (MOVE_IMAGE[0].id.includes("fats")) {
+			// 	starsToAdd += fatCount;
+			// } else if (MOVE_IMAGE[0].id.includes("dair")) {
+			// 	starsToAdd += dairyCount;
+			// } else if (MOVE_IMAGE[0].id.includes("vegg")) {
+			// 	starsToAdd += vegCount;
+			// } else if (MOVE_IMAGE[0].id.includes("carb")) {
+			// 	starsToAdd += carbCount;
+			// } else if (MOVE_IMAGE[0].id.includes("frui")) {
+			// 	starsToAdd += fruitCount;
+			// }
 
-			console.log("stars to add after if block", starsToAdd);
+			// console.log("stars to add after if block", starsToAdd);
 
 		}
 
 
-		else {
+		else { // moves off plate
 			MOVE_IMAGE.animate({	// TODO: do these need to be something different?
 				top: 0,
 				left: 0
 			})
 
-			starsToAdd -= 5;
 			// ORIGINAL_LEFT = null;
   	// 		ORIGINAL_TOP = null;
 		}
