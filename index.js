@@ -94,6 +94,7 @@ $(document).on('click', function(e){
 				foodImages[i].style.visibility = "hidden";
 			}
 		}
+		starsToAdd = 0;
 	}
 });
 
@@ -105,7 +106,7 @@ $(document).on('mousedown', function(evt) {
 
 		id = evt.target.id.slice(0,4); // should be fats, carb, dair, frui, or vegg
 		MOVE_IMAGE_DIV = $('#' + id + '-icon-div');
-		imageSrc = id + ".png";
+		imageSrc = "graphics/" + id + ".png";
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
 		MOVE_IMAGE = $('#' + evt.target.id);
