@@ -104,8 +104,14 @@ $(document).on('mousedown', function(evt) {
 
 	if (evt.target.classList.contains('food-image')) {
 
+		var correctLeft = $('#' + evt.target.id).css('left')
+		var correctTop = $('#' + evt.target.id).css('top')
+		console.log(correctLeft);
+		console.log(correctTop);
+
 		id = evt.target.id.slice(0,4); // should be fats, carb, dair, frui, or vegg
 		MOVE_IMAGE_DIV = $('#' + id + '-icon-div');
+		// console.log(MOVE_IMAGE_DIV.children());
 		imageSrc = "graphics/" + id + ".png";
 
 		//MOVE_IMAGE_DIV = $('#' + evt.target.id + '-div');
