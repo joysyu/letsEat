@@ -18,20 +18,18 @@ h1 {
 	width: 100%;
 }
 
-#pet {
-	position: relative;
-}
-
 #petDiv {
 	z-index: 0;
 	margin-top: 100px;
+	position: relative;
+	width: 460px;
 }
 
 #sunglassesDiv {
 	z-index: 1;
 	position: absolute;
-	top: 35%;
-	left: 33%;
+	top: 16%;
+	left: 32%;
 }
 
 #boneDiv {
@@ -48,15 +46,15 @@ h1 {
 #hatDiv {
 	z-index: 1;
 	position: absolute;
-	left: 33%;
-	top: 13%;
+	left: 32%;
+	top: -13%;
 }
 
 #bowtieDiv {
 	z-index: 1;
 	position: absolute;
-	left: 33%;
-	top: 59%;
+	left: 32%;
+	top: 49%;
 }
 
 #starsMsg {
