@@ -22,7 +22,6 @@ function setCookie(cname, cvalue, exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
-    console.log(ca)
     for(var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
@@ -39,6 +38,10 @@ $(document).ready(function() {
 	var cookieStars = getCookie('stars')
 	if(cookieStars){
 		stars = parseInt(cookieStars)
+	}
+	var user = getCookie('username')
+	if(user){
+		$("#welcome-message").html('Welcome ' + user + '!')
 	}
 	refreshStars();
 });

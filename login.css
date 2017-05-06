@@ -2,5 +2,25 @@
 /*	margin-top: 100px;
 */	margin-bottom: 50px;
 	text-align: center;
-	font-size: 30px;
+	font-size: 50px;
+}
+
+.login.button {
+	color: black;
+}
+
+.heart.icon {
+	color:red;
+}
+
+.asterisk.icon {
+	color:blue;
+}
+
+.smile.icon {
+	color: green;
+}
+
+.star.icon {
+	color: yellow;
 }
