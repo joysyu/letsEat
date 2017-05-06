@@ -98,7 +98,7 @@ $(document).on('click', '#boneButton', function() {
 		refreshStars();
 		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
 		hasBone = 1;
-		refeshHasBone();
+		refreshHasBone();
 
 		$(".progress").progress('increment');
 	} else {
