@@ -11,6 +11,8 @@ var seenBefore = [];
 
 var stars = 100;
 
+var hasHat = 0;
+
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -39,11 +41,19 @@ $(document).ready(function() {
 	if(cookieStars){
 		stars = parseInt(cookieStars)
 	}
+
+	var cookieHat = getCookie('hasHat');
+	if(cookieHat) {
+		hasHat = parseInt(cookieHat);
+	}
+
+
 	var user = getCookie('username')
 	if(user){
 		$("#welcome-message").html('Welcome ' + user + '!')
 	}
 	refreshStars();
+	refreshHasHat();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -52,6 +62,10 @@ $(document).on('click', '#hatButton', function() {
 		stars = stars - 40;
 		refreshStars();
 		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
+		hasHat = 1;
+		refreshHasHat();
+		// purchasedItems.push('hat');
+
 		$(".progress").progress('increment');
 	} else {
 		starErrorMsg();
@@ -64,6 +78,8 @@ $(document).on('click', '#boneButton', function() {
 		stars = stars - 20;
 		refreshStars();
 		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
+		// purchasedItems.push('bone');
+
 		$(".progress").progress('increment');
 	} else {
 		starErrorMsg();
@@ -76,6 +92,8 @@ $(document).on('click', '#sunglassesButton', function() {
 		stars = stars - 30;
 		refreshStars();
 		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
+		// purchasedItems.push('sunglasses');
+
 		$(".progress").progress('increment');
 	} else {
 		starErrorMsg();
@@ -88,6 +106,8 @@ $(document).on('click', '#bowtieButton', function() {
 		stars = stars - 50;
 		refreshStars();
 		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
+		// purchasedItems.push('bowtie');
+
 		$(".progress").progress('increment');
 	} else {
 		starErrorMsg();
@@ -99,6 +119,15 @@ function refreshStars() {
 	setCookie('stars', stars, 1)
 
 	$("#starText").html(stars);
+}
+
+function refreshHasHat() {
+	setCookie('hasHat', hasHat, 1);
+	console.log("refresh has hat ", hasHat);
+	if (hasHat == 1) {
+		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
+	}
+	
 }
 
 function starErrorMsg() {
