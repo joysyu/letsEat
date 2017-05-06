@@ -12,7 +12,6 @@ function setCookie(cname, cvalue, exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
-    console.log(ca)
     for(var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
@@ -33,16 +32,8 @@ $(document).on("click", ".login.button", function(evt) {
 });
 
 $(document).on("click", '.circular.ui.icon.button', function(evt) {
-
-	var x = getCookie('username')
-		if (x) {
-			console.log(x)
-		} else {
-			console.log("nope")
-		}
-
 	var button_id = evt.target.id
-	$('#' + button_id).css({'background': 'red'})
+	$('#' + button_id).css({'background': 'black'})
 	$('#' + button_id).prop('disabled', true);
 	if (order == undefined) {
 		$('#wrong-password').html("");
@@ -57,12 +48,20 @@ $(document).on("click", '.circular.ui.icon.button', function(evt) {
 			setCookie('username', user, 1)
 			setTimeout(function () {
 				window.location.href='index.html';
+				$('.circular.ui.icon.button').css({'background': 'grey'})
+
 			}, 500)
 		} else {
-			order = undefined
-			$('#wrong-password').html("<span> Wrong password! Please try again! </span>");
-			$('.circular.ui.icon.button').css({'background': ''})
-			$('.circular.ui.icon.button').prop('disabled', false)
+			$('.circular.ui.icon.button').css({'background': 'red'})
+
+			setTimeout(function () {
+				order = undefined
+				$('#wrong-password').html("<span> Wrong password! Please try again! </span>");
+				$('.circular.ui.icon.button').css({'background': ''})
+				$('.circular.ui.icon.button').prop('disabled', false)
+			}, 500)
+
+
 		}
 	}
 });
