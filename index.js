@@ -16,6 +16,8 @@ var hasBone = 0;
 var hasSunglasses = 0;
 var hasBowtie = 0;
 
+var progress = 10;
+
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -65,6 +67,11 @@ $(document).ready(function() {
 		hasBowtie = parseInt(cookieBowtie);
 	}
 
+	var cookieProgress = getCookie('progress');
+	if(cookieProgress) {
+		progress = parseInt(cookieProgress);
+	}
+
 	var user = getCookie('username')
 	if(user){
 		$("#welcome-message").html('Welcome ' + user + '!')
@@ -74,6 +81,7 @@ $(document).ready(function() {
 	refreshHasBone();
 	refreshHasSunglasses();
 	refreshHasBowtie();
+	refreshProgress();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -85,7 +93,9 @@ $(document).on('click', '#hatButton', function() {
 		hasHat = 1;
 		refreshHasHat();
 
-		$(".progress").progress('increment');
+		$(".progress").progress('increment', 10);
+		progress = progress + 10;
+		refreshProgress();
 	} else {
 		starErrorMsg();
 	}
@@ -100,7 +110,9 @@ $(document).on('click', '#boneButton', function() {
 		hasBone = 1;
 		refreshHasBone();
 
-		$(".progress").progress('increment');
+		$(".progress").progress('increment', 5);
+		progress = progress + 5;
+		refreshProgress();
 	} else {
 		starErrorMsg();
 	}
@@ -115,7 +127,9 @@ $(document).on('click', '#sunglassesButton', function() {
 		hasSunglasses = 1;
 		refreshHasSunglasses();
 
-		$(".progress").progress('increment');
+		$(".progress").progress('increment', 8);
+		progress = progress + 8;
+		refreshProgress();
 	} else {
 		starErrorMsg();
 	}
@@ -130,7 +144,9 @@ $(document).on('click', '#bowtieButton', function() {
 		hasBowtie = 1;
 		refreshHasBowtie();
 
-		$(".progress").progress('increment');
+		$(".progress").progress('increment', 12);
+		progress = progress + 12;
+		refreshProgress();
 	} else {
 		starErrorMsg();
 	}
@@ -170,6 +186,12 @@ function refreshHasBowtie() {
 	if (hasBowtie == 1) {
 		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
 	}
+}
+
+function refreshProgress() {
+	setCookie('progress', progress, 1);
+	$(".progress").progress({'percent': progress});
+	console.log("progress ", progress);
 }
 
 function starErrorMsg() {
