@@ -12,6 +12,9 @@ var seenBefore = [];
 var stars = 100;
 
 var hasHat = 0;
+var hasBone = 0;
+var hasSunglasses = 0;
+var hasBowtie = 0;
 
 
 function setCookie(cname, cvalue, exdays) {
@@ -47,6 +50,20 @@ $(document).ready(function() {
 		hasHat = parseInt(cookieHat);
 	}
 
+	var cookieBone = getCookie('hasBone');
+	if(cookieBone) {
+		hasBone = parseInt(cookieBone);
+	}
+
+	var cookieSunglasses = getCookie('hasSunglasses');
+	if(cookieSunglasses) {
+		hasSunglasses = parseInt(cookieSunglasses);
+	}
+
+	var cookieBowtie = getCookie('hasBowtie');
+	if(cookieBowtie) {
+		hasBowtie = parseInt(cookieBowtie);
+	}
 
 	var user = getCookie('username')
 	if(user){
@@ -54,6 +71,9 @@ $(document).ready(function() {
 	}
 	refreshStars();
 	refreshHasHat();
+	refreshHasBone();
+	refreshHasSunglasses();
+	refreshHasBowtie();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -64,7 +84,6 @@ $(document).on('click', '#hatButton', function() {
 		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
 		hasHat = 1;
 		refreshHasHat();
-		// purchasedItems.push('hat');
 
 		$(".progress").progress('increment');
 	} else {
@@ -78,7 +97,8 @@ $(document).on('click', '#boneButton', function() {
 		stars = stars - 20;
 		refreshStars();
 		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
-		// purchasedItems.push('bone');
+		hasBone = 1;
+		refeshHasBone();
 
 		$(".progress").progress('increment');
 	} else {
@@ -92,7 +112,8 @@ $(document).on('click', '#sunglassesButton', function() {
 		stars = stars - 30;
 		refreshStars();
 		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
-		// purchasedItems.push('sunglasses');
+		hasSunglasses = 1;
+		refreshHasSunglasses();
 
 		$(".progress").progress('increment');
 	} else {
@@ -106,7 +127,8 @@ $(document).on('click', '#bowtieButton', function() {
 		stars = stars - 50;
 		refreshStars();
 		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
-		// purchasedItems.push('bowtie');
+		hasBowtie = 1;
+		refreshHasBowtie();
 
 		$(".progress").progress('increment');
 	} else {
@@ -127,7 +149,27 @@ function refreshHasHat() {
 	if (hasHat == 1) {
 		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
 	}
-	
+}
+
+function refreshHasBone() {
+	setCookie('hasBone', hasBone, 1);
+	if (hasBone == 1) {
+		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
+	}
+}
+
+function refreshHasSunglasses() {
+	setCookie('hasSunglasses', hasSunglasses, 1);
+	if (hasSunglasses == 1) {
+		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
+	}
+}
+
+function refreshHasBowtie() {
+	setCookie('hasBowtie', hasBowtie, 1);
+	if (hasBowtie == 1) {
+		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
+	}
 }
 
 function starErrorMsg() {
