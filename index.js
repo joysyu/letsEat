@@ -3,7 +3,7 @@ var MOVE_IMAGE = null
 
 var IMAGE_NUM = 0;
 
-var idToCount = {'vegg':5, 'carb':3, 'frui':5, 'dair':4, 'fats':1}
+var idToCount = {'vegg':5, 'carb':3, 'frui':5, 'dair':4, 'prot':1}
 
 var starsToAdd = 0;
 
