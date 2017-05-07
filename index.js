@@ -9,6 +9,8 @@ var starsToAdd = 0;
 
 var seenBefore = [];
 
+var currentlyOnPlate = [];
+
 var stars = 100;
 
 var hasHat = 0;
@@ -302,16 +304,24 @@ $(document).on('mouseup', function(evt) {
 			//console.log(MOVE_IMAGE[0].id);
 
 			// console.log("stars to add after if block", starsToAdd);
-			starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
-			showTempStars();
-
+			if (!currentlyOnPlate.includes(MOVE_IMAGE[0].id)){
+				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
+				currentlyOnPlate.push(MOVE_IMAGE[0].id);
+				showTempStars();
+			}
 		}
 
 
 		else { // moves off plate
 			//console.log(MOVE_IMAGE[0].id)
-			starsToAdd -= idToCount[MOVE_IMAGE[0].id.slice(0,4)];
-			showTempStars();
+			if (currentlyOnPlate.includes(MOVE_IMAGE[0].id)){
+				starsToAdd -= idToCount[MOVE_IMAGE[0].id.slice(0,4)];
+				showTempStars();
+				index = currentlyOnPlate.indexOf(MOVE_IMAGE[0].id)
+				if (index > -1) {
+    				currentlyOnPlate.splice(index, 1);
+				}				
+			}
 			MOVE_IMAGE.animate({	// TODO: do these need to be something different?
 				top: 0,
 				left: 0
