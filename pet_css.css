@@ -2,8 +2,9 @@
 	font-size: 3em;
 }
 
-.ui.card {
-	width: 60%;
+.ui.centered.card {
+	min-width: 155px;
+	max-width: 155px;
 }
 
 .right.floated.column {
