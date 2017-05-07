@@ -189,7 +189,12 @@ function refreshHasBowtie() {
 }
 
 function refreshProgress() {
+	if ($(".progress").attr("data-percent") >= 100) {
+		progress = 100;
+	}
+
 	setCookie('progress', progress, 1);
+
 	$(".progress").progress({'percent': progress});
 	console.log("progress ", progress);
 }
