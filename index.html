@@ -139,18 +139,21 @@
             
                 <!--plate-->
                 <div class="six wide middle aligned column">
-                    <div id = "plate-image-div">
-                        <img class="ui fluid image" src="graphics/plateFork.png" alt="plate" id="plate-image">
-                    </div>
+                    <img class="ui fluid image" src="graphics/plateFork.png" alt="plate" id="plate-image">
                     <div class="row"><br></div>
                     <div class="center aligned row">
+                        <div class="ui centered card" id="tempStarCard">
+                            <div class="content">
+                                <p id="tempStars" style="font-size: 1.3em;"></p>
+                            </div>
+                        </div>
                         <button class="ui primary right floated button" id = "saveButton">Eat!</button>
                     </div>
                 </div>
 
                 <!--pet-->
                 <div class="three wide middle aligned column">
-                    <div class="ui centered card">
+                    <div class="ui centered card" id = "starBox">
                         <div class="content">
                             <img class="left floated tiny ui image" src="graphics/star.jpeg">
                             <div class="right floated header">

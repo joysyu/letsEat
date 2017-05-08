@@ -3,10 +3,7 @@ var MOVE_IMAGE = null
 
 var IMAGE_NUM = 0;
 
-var permittedServings = {'vegg':5, 'carb':2, 'frui':5, 'dair':2, 'prot':3}
-var notPermittedServings = {'vegg':0, 'carb':0, 'frui':0, 'dair':0, 'prot':0}
-var idToCount = permittedServings;
-var servings = {'vegg': 3, 'carb': 6, 'frui': 3, 'dair': 2, 'prot': 2}
+var idToCount = {'vegg':5, 'carb':3, 'frui':5, 'dair':4, 'prot':1}
 
 var starsToAdd = 0;
 
@@ -87,6 +84,7 @@ $(document).ready(function() {
 	refreshHasSunglasses();
 	refreshHasBowtie();
 	refreshProgress();
+	showTempStars();
 });
 
 $(document).on('click', '#hatButton', function() {
@@ -160,12 +158,11 @@ $(document).on('click', '#bowtieButton', function() {
 
 function refreshStars() {
 	setCookie('stars', stars, 1)
-
 	$("#starText").html(stars);
 }
 
 function showTempStars() {
-	$("#starText").html(stars + starsToAdd);
+	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:30%;'>");
 }
 
 function refreshHasHat() {
@@ -243,6 +240,7 @@ $(document).on('click', function(e){
 		refreshStars();
 		currentlyOnPlate = [];
 		starsToAdd = 0;
+		showTempStars();
 	}
 
 });
@@ -301,8 +299,7 @@ $(document).on('mouseup', function(evt) {
 	evt.preventDefault();
 
 	if (MOVE_IMAGE) {
-		var moveImageFood = MOVE_IMAGE.attr('id').slice(0, 4);
-		if (evt.target.id === 'plate-image' || currentlyOnPlate.indexOf(evt.target.id) != -1) {
+		if (evt.target.id === 'plate-image') {
 			// TODO: put it on the plate, decrement that food icon's counter, etc.
 
 			//console.log(MOVE_IMAGE[0].id);
@@ -311,19 +308,6 @@ $(document).on('mouseup', function(evt) {
 			if (!currentlyOnPlate.includes(MOVE_IMAGE[0].id)){
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
 				currentlyOnPlate.push(MOVE_IMAGE[0].id);
-
-				if (servings[moveImageFood] === 0) {
-					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
-				}
-				else {
-					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'auto'});
-					servings[moveImageFood] -= 1;
-				}
-
-				showTempStars();
-
 			}
 		}
 
@@ -332,12 +316,10 @@ $(document).on('mouseup', function(evt) {
 			//console.log(MOVE_IMAGE[0].id)
 			if (currentlyOnPlate.includes(MOVE_IMAGE[0].id)){
 				starsToAdd -= idToCount[MOVE_IMAGE[0].id.slice(0,4)];
-				showTempStars();
 				index = currentlyOnPlate.indexOf(MOVE_IMAGE[0].id)
 				if (index > -1) {
     				currentlyOnPlate.splice(index, 1);
-				}
-				servings[moveImageID] += 1;				
+				}				
 			}
 			MOVE_IMAGE.animate({	// TODO: do these need to be something different?
 				top: 0,
@@ -349,8 +331,10 @@ $(document).on('mouseup', function(evt) {
 		}
 
 		MOVE_IMAGE.css('pointer-events', 'auto');
+		showTempStars();
+
 	}
-	console.log(servings)
+
 	MOVE_IMAGE = null;
 
 });
