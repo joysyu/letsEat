@@ -5,7 +5,7 @@ var IMAGE_NUM = 0;
 
 var permittedServings = {'vegg':5, 'carb':2, 'frui':5, 'dair':2, 'prot':3}
 var notPermittedServings = {'vegg':0, 'carb':0, 'frui':0, 'dair':0, 'prot':0}
-var idToCount = permittedServings;
+var idToCount = {'vegg':null, 'carb':null, 'frui':null, 'dair':null, 'prot':null};
 var servings = {'vegg': 3, 'carb': 6, 'frui': 3, 'dair': 2, 'prot': 2}
 
 var starsToAdd = 0;
@@ -315,10 +315,12 @@ $(document).on('mouseup', function(evt) {
 				// currentlyOnPlate.push(MOVE_IMAGE[0].id);
 
 				if (servings[moveImageFood] <= 0) {
+					console.log('blocking')
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
 					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
 				}
 				else {
+					console.log('allowing')
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
 					$('#' + moveImageFood + '-star').css({'visibility':'auto'});
 				}
