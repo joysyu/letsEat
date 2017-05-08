@@ -275,7 +275,7 @@ $(document).on('mousedown', function(evt) {
 
 		IMAGE_NUM += 1;
 
-		toAppend = "<img id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute'>";
+		toAppend = "<input type='image' id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute'>";
 		MOVE_IMAGE_DIV.append(toAppend);
 
 		if (!MOVE_IMAGE.attr('original-left') && !MOVE_IMAGE.attr('original-top')) {
