@@ -92,7 +92,17 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '#hatButton', function() {
-	console.log("click HAT ", stars);
+	if (stars >= 40) {
+		$("#petDiv").append("<div id='hatDiv'><img id='hatImg' class='ui small image' src='graphics/hat.png'></div>");
+		$("#buyColumn").html("<button class='ui primary right floated button' id = 'buyHatButton'>" + "Buy!" + "</button>"); 
+		$("#removeColumn").html("<button class='ui primary left floated button' id = 'removeHatButton'>" + "Remove" + "</button>");
+		disableButtons();
+	} else {
+		starErrorMsg();
+	}
+})
+
+$(document).on('click', '#buyHatButton', function() {
 	if (stars >= 40) {
 		stars = stars - 40;
 		refreshStars();
@@ -103,13 +113,34 @@ $(document).on('click', '#hatButton', function() {
 		$(".progress").progress('increment', 10);
 		progress = progress + 10;
 		refreshProgress();
+
+		$('#buyColumn').empty();
+		$('#removeColumn').empty();
+		enableButtons();
 	} else {
 		starErrorMsg();
 	}
 })
 
+$(document).on('click', '#removeHatButton', function() {
+	$('#buyColumn').empty();
+	$('#removeColumn').empty();
+	$('#hatDiv').remove();
+	enableButtons();
+})
+
 $(document).on('click', '#boneButton', function() {
-	console.log("CLICK BONE ", stars);
+	if (stars >= 20) {
+		$("#petDiv").append("<div id='boneDiv'><img id='boneImg' class='ui small image' src='graphics/bone.png'></div>");
+		$("#buyColumn").html("<button class='ui primary right floated button' id = 'buyBoneButton'>" + "Buy!" + "</button>"); 
+		$("#removeColumn").html("<button class='ui primary left floated button' id = 'removeBoneButton'>" + "Remove" + "</button>");	
+		disableButtons();
+	} else {
+		starErrorMsg();
+	}
+})
+
+$(document).on('click', '#buyBoneButton', function() {
 	if (stars >= 20) {
 		stars = stars - 20;
 		refreshStars();
@@ -120,13 +151,34 @@ $(document).on('click', '#boneButton', function() {
 		$(".progress").progress('increment', 5);
 		progress = progress + 5;
 		refreshProgress();
+
+		$('#buyColumn').empty();
+		$('#removeColumn').empty();
+		enableButtons();
 	} else {
 		starErrorMsg();
 	}
 })
 
+$(document).on('click', '#removeBoneButton', function() {
+	$('#buyColumn').empty();
+	$('#removeColumn').empty();
+	$('#boneDiv').remove();
+	enableButtons();
+})
+
 $(document).on('click', '#sunglassesButton', function() {
-	console.log("click GLASSES ", stars);
+	if (stars >= 30) {
+		$("#petDiv").append("<div id='sunglassesDiv'><img id='sunglassesImg' class='ui small image' src='graphics/sunglasses.png'></div>");
+		$("#buyColumn").html("<button class='ui primary right floated button' id = 'buySunglassesButton'>" + "Buy!" + "</button>"); 
+		$("#removeColumn").html("<button class='ui primary left floated button' id = 'removeSunglassesButton'>" + "Remove" + "</button>");
+		disableButtons();
+	} else {
+		starErrorMsg();
+	}
+})
+
+$(document).on('click', '#buySunglassesButton', function() {
 	if (stars >= 30) {
 		stars = stars - 30;
 		refreshStars();
@@ -137,13 +189,34 @@ $(document).on('click', '#sunglassesButton', function() {
 		$(".progress").progress('increment', 8);
 		progress = progress + 8;
 		refreshProgress();
+
+		$('#buyColumn').empty();
+		$('#removeColumn').empty();
+		enableButtons();
 	} else {
 		starErrorMsg();
 	}
 })
 
+$(document).on('click', '#removeSunglassesButton', function() {
+	$('#buyColumn').empty();
+	$('#removeColumn').empty();
+	$('#sunglassesDiv').remove();
+	enableButtons();
+})
+
 $(document).on('click', '#bowtieButton', function() {
-	console.log("click BOWTIE ", stars);
+	if (stars >= 50) {
+		$("#petDiv").append("<div id='bowtieDiv'><img id='bowtieImg' class='ui small image' src='graphics/bowtie.png'></div>");
+		$("#buyColumn").html("<button class='ui primary right floated button' id = 'buyBowtieButton'>" + "Buy!" + "</button>"); 
+		$("#removeColumn").html("<button class='ui primary left floated button' id = 'removeBowtieButton'>" + "Remove" + "</button>");
+		disableButtons();
+	} else {
+		starErrorMsg();
+	}
+})
+
+$(document).on('click', '#buyBowtieButton', function() {
 	if (stars >= 50) {
 		stars = stars - 50;
 		refreshStars();
@@ -154,10 +227,35 @@ $(document).on('click', '#bowtieButton', function() {
 		$(".progress").progress('increment', 12);
 		progress = progress + 12;
 		refreshProgress();
+
+		$('#buyColumn').empty();
+		$('#removeColumn').empty();
+		enableButtons();
 	} else {
 		starErrorMsg();
 	}
 })
+
+$(document).on('click', '#removeBowtieButton', function() {
+	$('#buyColumn').empty();
+	$('#removeColumn').empty();
+	$('#bowtieDiv').remove();
+	enableButtons();
+})
+
+function disableButtons() {
+	$("#hatButton").addClass('disabled');
+	$("#boneButton").addClass('disabled');
+	$("#sunglassesButton").addClass('disabled');
+	$("#bowtieButton").addClass('disabled');
+}
+
+function enableButtons() {
+	$("#hatButton").removeClass('disabled');
+	$("#boneButton").removeClass('disabled');
+	$("#sunglassesButton").removeClass('disabled');
+	$("#bowtieButton").removeClass('disabled');
+}
 
 
 function refreshStars() {
