@@ -166,7 +166,7 @@ function refreshStars() {
 }
 
 function showTempStars() {
-	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:30%;'>");
+	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:50%;'>");
 }
 
 function refreshHasHat() {
@@ -326,7 +326,8 @@ $(document).on('mouseup', function(evt) {
 				if (servings[moveImageFood] <= 0) {
 					console.log('blocking')
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					//$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 				else {
 					console.log('allowing')
@@ -337,10 +338,8 @@ $(document).on('mouseup', function(evt) {
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
 				currentlyOnPlate.push(MOVE_IMAGE[0].id);
 				showTempStars();
-
 			}
 		}
-
 
 		else { // moves off plate
 			//console.log(MOVE_IMAGE[0].id)
