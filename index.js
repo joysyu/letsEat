@@ -228,7 +228,6 @@ $(document).on('click', function(e){
 			                rectPlate.bottom < rectImage.top || 
 			                rectPlate.top > rectImage.bottom)
 			if (overlap) {
-				console.log(foodImages[i]);
 				foodImages[i].style.visibility = "hidden";
 
 				console.log("ID---", foodImages[i].id);
@@ -239,7 +238,8 @@ $(document).on('click', function(e){
 			}
 		}
 		refreshStars();
-
+		currentlyOnPlate = [];
+		starsToAdd = 0;
 	}
 
 });
@@ -308,6 +308,7 @@ $(document).on('mouseup', function(evt) {
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
 				currentlyOnPlate.push(MOVE_IMAGE[0].id);
 				showTempStars();
+
 			}
 		}
 

@@ -2,3 +2,9 @@
 	margin-top: 50px;
 	font-size: 40px;
 }
+
+#plate-image-div {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+}
