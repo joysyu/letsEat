@@ -264,7 +264,7 @@ function refreshStars() {
 }
 
 function showTempStars() {
-	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:30%;'>");
+	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:50%;'>");
 }
 
 function refreshHasHat() {
@@ -356,6 +356,8 @@ $(document).on('mousedown', function(evt) {
 
 	if (evt.target.classList.contains('food-image')) {
 
+		$('#plate-image').css({'cursor': 'pointer'})
+
 		var correctLeft = $('#' + evt.target.id).css('left')
 		var correctTop = $('#' + evt.target.id).css('top')
 		console.log(correctLeft);
@@ -373,7 +375,7 @@ $(document).on('mousedown', function(evt) {
 
 		IMAGE_NUM += 1;
 
-		toAppend = "<img id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute'>";
+		toAppend = "<input type='image' id =" + id + IMAGE_NUM.toString() + ' ' + "class='ui small image food-image' src='" + imageSrc +"' style='top: 0; left: 0; position: absolute'>";
 		MOVE_IMAGE_DIV.append(toAppend);
 
 		if (!MOVE_IMAGE.attr('original-left') && !MOVE_IMAGE.attr('original-top')) {
@@ -381,7 +383,7 @@ $(document).on('mousedown', function(evt) {
 			MOVE_IMAGE.attr('original-top', evt.pageY)
 		}
 
-	}
+	} 
 
 });
 
@@ -403,6 +405,8 @@ $(document).on('mousemove', function(evt) {
 $(document).on('mouseup', function(evt) {
 	evt.preventDefault();
 
+	$('#plate-image').css({cursor: ""})
+
 	if (MOVE_IMAGE) {
 		var moveImageFood = MOVE_IMAGE.attr('id').slice(0, 4);
 		console.log(permittedServings)
@@ -418,23 +422,29 @@ $(document).on('mouseup', function(evt) {
 				// currentlyOnPlate.push(MOVE_IMAGE[0].id);
 
 				if (servings[moveImageFood] <= 0) {
-					console.log('blocking')
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					//$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					// $('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 				else {
-					console.log('allowing')
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
+					// $('#' + moveImageFood + '-star').css({'visibility':'visible'});
+				}
+
+				if (servings[moveImageFood] <= 1) {
+					console.log('have sercings')
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
+				}
+				else {
+					console.log('no servings')
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/" + permittedServings[moveImageFood].toString() + "star.png'>");
 				}
 				servings[moveImageFood] -= 1;
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
 				currentlyOnPlate.push(MOVE_IMAGE[0].id);
 				showTempStars();
-
 			}
 		}
-
 
 		else { // moves off plate
 			//console.log(MOVE_IMAGE[0].id)
@@ -447,11 +457,18 @@ $(document).on('mouseup', function(evt) {
 				}
 				if (servings[moveImageFood] >= 0) {
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
+					// $('#' + moveImageFood + '-star').css({'visibility':'visible'});
 				}
 				else {
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					// $('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+				}
+
+				if (servings[moveImageFood] >= 0) {
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/" + permittedServings[moveImageFood].toString() + "star.png'>");
+				}
+				else {
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 
 				servings[moveImageFood] += 1;
