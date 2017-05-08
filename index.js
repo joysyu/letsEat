@@ -166,7 +166,7 @@ function refreshStars() {
 }
 
 function showTempStars() {
-	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:30%;'>");
+	$("#tempStars").html("+" + starsToAdd + "<img class='tiny ui image' src='graphics/star.jpeg' style='width:50%;'>");
 }
 
 function refreshHasHat() {
@@ -345,10 +345,8 @@ $(document).on('mouseup', function(evt) {
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
 				currentlyOnPlate.push(MOVE_IMAGE[0].id);
 				showTempStars();
-
 			}
 		}
-
 
 		else { // moves off plate
 			//console.log(MOVE_IMAGE[0].id)
