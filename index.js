@@ -324,15 +324,22 @@ $(document).on('mouseup', function(evt) {
 				// currentlyOnPlate.push(MOVE_IMAGE[0].id);
 
 				if (servings[moveImageFood] <= 0) {
-					console.log('blocking')
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
 					//$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					// $('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
+				}
+				else {
+					idToCount[moveImageFood] = permittedServings[moveImageFood];
+					// $('#' + moveImageFood + '-star').css({'visibility':'visible'});
+				}
+
+				if (servings[moveImageFood] <= 1) {
+					console.log('have sercings')
 					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 				else {
-					console.log('allowing')
-					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
+					console.log('no servings')
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/" + permittedServings[moveImageFood].toString() + "star.png'>");
 				}
 				servings[moveImageFood] -= 1;
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
@@ -352,11 +359,18 @@ $(document).on('mouseup', function(evt) {
 				}
 				if (servings[moveImageFood] >= 0) {
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
+					// $('#' + moveImageFood + '-star').css({'visibility':'visible'});
 				}
 				else {
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					// $('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+				}
+
+				if (servings[moveImageFood] >= 0) {
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/" + permittedServings[moveImageFood].toString() + "star.png'>");
+				}
+				else {
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 
 				servings[moveImageFood] += 1;
