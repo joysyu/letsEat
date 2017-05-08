@@ -322,7 +322,8 @@ $(document).on('mouseup', function(evt) {
 				if (servings[moveImageFood] <= 0) {
 					console.log('blocking')
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					//$('#' + moveImageFood + '-star').css({'visibility':'hidden'});
+					$('#' + moveImageFood + '-star').html("<img style='height:5%; width: auto;' class='ui mini centered image' src='graphics/dailyServingCheck.png'> ");
 				}
 				else {
 					console.log('allowing')
