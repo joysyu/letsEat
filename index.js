@@ -322,7 +322,7 @@ $(document).on('mouseup', function(evt) {
 				else {
 					console.log('allowing')
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'auto'});
+					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
 				}
 				servings[moveImageFood] -= 1;
 				starsToAdd += idToCount[MOVE_IMAGE[0].id.slice(0,4)];
@@ -344,7 +344,7 @@ $(document).on('mouseup', function(evt) {
 				}
 				if (servings[moveImageFood] >= 0) {
 					idToCount[moveImageFood] = permittedServings[moveImageFood];
-					$('#' + moveImageFood + '-star').css({'visibility':'auto'});
+					$('#' + moveImageFood + '-star').css({'visibility':'visible'});
 				}
 				else {
 					idToCount[moveImageFood] = notPermittedServings[moveImageFood];
