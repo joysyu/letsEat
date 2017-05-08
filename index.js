@@ -258,6 +258,8 @@ $(document).on('mousedown', function(evt) {
 
 	if (evt.target.classList.contains('food-image')) {
 
+		$('#plate-image').css({'cursor': 'pointer'})
+
 		var correctLeft = $('#' + evt.target.id).css('left')
 		var correctTop = $('#' + evt.target.id).css('top')
 		console.log(correctLeft);
@@ -283,7 +285,7 @@ $(document).on('mousedown', function(evt) {
 			MOVE_IMAGE.attr('original-top', evt.pageY)
 		}
 
-	}
+	} 
 
 });
 
@@ -304,6 +306,8 @@ $(document).on('mousemove', function(evt) {
 
 $(document).on('mouseup', function(evt) {
 	evt.preventDefault();
+
+	$('#plate-image').css({cursor: ""})
 
 	if (MOVE_IMAGE) {
 		var moveImageFood = MOVE_IMAGE.attr('id').slice(0, 4);
