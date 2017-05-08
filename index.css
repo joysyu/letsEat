@@ -6,6 +6,7 @@
 
 #plate-image {
     width: 450px;
+   cursor:pointer;
 }
 
 #tempStarCard {
